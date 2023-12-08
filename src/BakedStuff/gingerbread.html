@@ -1,0 +1,359 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="apple-touch-icon" type="image/png"
+        href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png">
+
+    <meta name="apple-mobile-web-app-title" content="CodePen">
+
+    <link rel="shortcut icon" type="image/x-icon"
+        href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
+
+    <link rel="mask-icon" type="image/x-icon"
+        href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg"
+        color="#111">
+
+    <title>Gingerbread</title>
+    <link rel="canonical" href="https://codepen.io/johnnyfekete/pen/ZEpGerj">
+
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: repeating-linear-gradient(75deg,
+                    transparent,
+                    transparent 20px,
+                    #9E1628 10px,
+                    #9E1628 40px),
+                linear-gradient(to bottom,
+                    #B11E31,
+                    #C23446)
+        }
+
+        body::after {
+            content: '';
+            display: block;
+            position: fixed;
+            z-index: -1;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: radial-gradient(circle at center, rgba(0, 0, 0, 0.5) 25%, rgba(0, 0, 0, 0) 50%);
+        }
+
+        .gingerbread-man {
+            --ginger-color: #c5753d;
+            --dark-ginger-color: #974919;
+            --white-color: #f0e5d9;
+            --green-color: #50af52;
+            --red-color: #b22922;
+
+            position: relative;
+        }
+
+        .gingerbread-man .head {
+            width: 5rem;
+            height: 5rem;
+            position: relative;
+        }
+
+        .gingerbread-man .head::after {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 5rem;
+            height: 5rem;
+            background-color: var(--ginger-color);
+            border-radius: 2.2rem;
+            transform: rotate(-15deg);
+        }
+
+        .gingerbread-man .eye {
+            width: 0.8rem;
+            height: 0.8rem;
+            border-radius: 50%;
+            background-color: var(--white-color);
+            box-shadow: -1px 1px 1px 0 rgba(0, 0, 0, 0.5);
+            position: absolute;
+            z-index: 2;
+        }
+
+        .gingerbread-man .eye.eye--left {
+            left: 22%;
+            top: 45%;
+        }
+
+        .gingerbread-man .eye.eye--right {
+            right: 25%;
+            top: 40%;
+        }
+
+        .gingerbread-man .eyebrow {
+            position: absolute;
+            z-index: 2;
+            height: 0.3rem;
+            border-radius: 0.3rem;
+            background-color: var(--green-color);
+            box-shadow: -1px 1px 1px 0 rgba(0, 0, 0, 0.5), inset -1px 1px 1px 0 rgba(255, 255, 255, 0.5);
+        }
+
+        .gingerbread-man .eyebrow.eyebrow--left {
+            top: 1.6rem;
+            left: 0.8rem;
+            transform: rotate(-35deg);
+            width: 0.9rem;
+            height: 0.25rem;
+        }
+
+        .gingerbread-man .eyebrow.eyebrow--right {
+            top: 1.35rem;
+            right: 1.32rem;
+            transform: rotate(10deg);
+            width: 0.9rem;
+            height: 0.3rem;
+        }
+
+        .gingerbread-man .mouth {
+            position: absolute;
+            z-index: 2;
+            width: 3rem;
+            height: 3rem;
+            top: 1.7rem;
+            left: 1rem;
+            transform-origin: center center;
+            transform: rotate(-150deg);
+        }
+
+        .gingerbread-man .mouth div {
+            box-sizing: border-box;
+            position: absolute;
+        }
+
+        .gingerbread-man .mouth__lower-lip {
+            width: 1.5rem;
+            height: 1.5rem;
+            overflow: hidden;
+        }
+
+        .gingerbread-man .mouth__lower-lip::after {
+            content: '';
+            display: block;
+            width: 3rem;
+            height: 3rem;
+            border: 3px solid var(--red-color);
+            border-radius: 50%;
+        }
+
+        .gingerbread-man .mouth__left-lip {
+            width: 0.75rem;
+            height: 1.5rem;
+            overflow: hidden;
+            left: 1.5rem;
+            top: 0rem;
+        }
+
+        .gingerbread-man .mouth__left-lip::after {
+            content: '';
+            display: block;
+            width: 0.75rem;
+            height: 0.75rem;
+            margin-left: -0.5rem;
+            border: 3px solid var(--red-color);
+            border-radius: 50%;
+        }
+
+        .gingerbread-man .mouth__right-lip {
+            width: 1rem;
+            height: 0.5rem;
+            overflow: hidden;
+            left: 0rem;
+            top: 1.5rem;
+        }
+
+        .gingerbread-man .mouth__right-lip::after {
+            content: '';
+            display: block;
+            width: 0.5rem;
+            height: 0.5rem;
+            margin-top: -0.4rem;
+            border: 3px solid var(--red-color);
+            border-radius: 50%;
+        }
+
+        .gingerbread-man .mouth__upper-lip {
+            width: 0.8rem;
+            height: 0.7rem;
+            overflow: hidden;
+            left: 0.7rem;
+            top: 0.8rem;
+        }
+
+        .gingerbread-man .mouth__upper-lip::after {
+            content: '';
+            display: block;
+            width: 1.8rem;
+            height: 1.0rem;
+            margin-top: 0.1rem;
+            border: 3px solid var(--red-color);
+            border-radius: 50%;
+        }
+
+        .gingerbread-man .body {
+            position: relative;
+            width: 5rem;
+            height: 8rem;
+        }
+
+        .gingerbread-man .arm {
+            width: 5rem;
+            height: 2.2rem;
+            background-color: var(--ginger-color);
+            background: linear-gradient(to right, var(--dark-ginger-color) 0%, var(--ginger-color) 50%);
+            border-radius: 1rem;
+            position: absolute;
+        }
+
+        .gingerbread-man .arm::after {
+            content: '\00a0\00a0\00a0\00a0\00a0';
+            width: 2.2rem;
+            height: 1rem;
+            overflow: hidden;
+            display: block;
+            font-size: 2rem;
+            line-height: 0;
+            -webkit-text-decoration: underline white wavy;
+            text-decoration: underline white wavy;
+            transform: rotate(90deg) translateX(0.6rem) translateY(-0.5rem);
+            transform-origin: center center;
+        }
+
+        .gingerbread-man .arm.arm--left {
+            transform: rotate(-35deg) translateX(-1.5rem) translateY(-0.8rem);
+        }
+
+        .gingerbread-man .arm.arm--right {
+            transform: rotate(-145deg) translateX(-1.5rem) translateY(1rem);
+        }
+
+        .gingerbread-man .leg {
+            width: 2.2rem;
+            height: 8rem;
+            background-color: var(--ginger-color);
+            background: linear-gradient(to top, var(--dark-ginger-color) 0%, var(--ginger-color) 40%);
+            border-radius: 1rem;
+            position: absolute;
+        }
+
+        .gingerbread-man .leg::after {
+            content: '\00a0\00a0\00a0\00a0\00a0';
+            width: 2.2rem;
+            height: 1rem;
+            overflow: hidden;
+            display: block;
+            font-size: 2rem;
+            line-height: 0;
+            -webkit-text-decoration: underline white wavy;
+            text-decoration: underline white wavy;
+            position: absolute;
+            bottom: 1.2rem;
+        }
+
+        .gingerbread-man .leg.leg--left {
+            transform: rotate(10deg) translateX(0.5rem) translateY(0rem);
+        }
+
+        .gingerbread-man .leg.leg--right {
+            transform: rotate(-10deg) translateX(2.4rem) translateY(0.4rem);
+        }
+
+        .gingerbread-man .belt::after {
+            content: '\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0';
+            width: 4.1rem;
+            height: 2rem;
+            overflow: hidden;
+            display: block;
+            font-size: 1.8rem;
+            line-height: 0;
+            -webkit-text-decoration: underline white wavy;
+            text-decoration: underline white wavy;
+            position: absolute;
+            top: 3.3rem;
+            left: 0.5rem;
+            z-index: 3;
+            transform: rotate(4deg);
+        }
+
+        .gingerbread-man .button {
+            position: absolute;
+            width: 1.2rem;
+            height: 1.1rem;
+            border-radius: 50%;
+            background-color: var(--white-color);
+        }
+
+        .gingerbread-man .button::after {
+            content: '';
+            display: block;
+            width: 0.9rem;
+            height: 0.9rem;
+            border-radius: 50%;
+            background: var(--green-color);
+            box-shadow: -1px 1px 1px 0 rgba(0, 0, 0, 0.3), inset -3px 3px 5px 0 rgba(255, 255, 255, 0.2);
+            margin-left: 0.15rem;
+        }
+
+        .gingerbread-man .button.button--top {
+            left: 2rem;
+            top: 0.3rem;
+        }
+
+        .gingerbread-man .button.button--bottom {
+            left: 2.1rem;
+            top: 2.1rem;
+            transform: rotate(145deg)
+        }
+    </style>
+
+    <script>
+        window.console = window.console || function (t) { };
+    </script>
+
+</head>
+
+<body translate="no">
+    <div class="gingerbread-man">
+        <div class="head">
+            <div class="eyebrow eyebrow--left"></div>
+            <div class="eyebrow eyebrow--right"></div>
+            <div class="eye eye--left"></div>
+            <div class="eye eye--right"></div>
+            <div class="mouth">
+                <div class="mouth__lower-lip"></div>
+                <div class="mouth__left-lip"></div>
+                <div class="mouth__right-lip"></div>
+                <div class="mouth__upper-lip"></div>
+            </div>
+        </div>
+        <div class="body">
+            <div class="arm arm--left"></div>
+            <div class="arm arm--right"></div>
+            <div class="leg leg--left"></div>
+            <div class="leg leg--right"></div>
+            <div class="belt"></div>
+            <div class="button button--top"></div>
+            <div class="button button--bottom"></div>
+        </div>
+    </div>
+
+
+
+
+
+
+</body>
+
+</html>
